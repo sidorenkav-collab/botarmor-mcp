@@ -1,0 +1,50 @@
+{
+  "name": "@botarmor/mcp",
+  "version": "0.1.0",
+  "description": "MCP server for BotArmor: crash-test your chatbot or AI agent from Claude Code, Cursor or any MCP client, and get a report the model can turn into fixes.",
+  "type": "module",
+  "license": "MIT",
+  "author": "BotArmor AI (Rhone IA)",
+  "homepage": "https://github.com/sidorenkav-collab/botarmor-mcp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidorenkav-collab/botarmor-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sidorenkav-collab/botarmor-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude-code",
+    "red-team",
+    "chatbot",
+    "ai-agent",
+    "security",
+    "botarmor"
+  ],
+  "bin": {
+    "botarmor-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist/*.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.3"
+  }
+}
