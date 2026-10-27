@@ -1,0 +1,36 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.sidorenkav-collab/botarmor",
+  "description": "Crash-test chatbots and AI agents: 12 attack levels, A-F grade, ready-to-paste prompt fixes.",
+  "repository": {
+    "url": "https://github.com/sidorenkav-collab/botarmor-mcp",
+    "source": "github"
+  },
+  "version": "0.1.1",
+  "websiteUrl": "https://botarmor.eu/agents/#mcp",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@botarmor/mcp",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "BOTARMOR_API_KEY",
+          "description": "BotArmor API key (ba_live_...), from the client area, tab API",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://app.botarmor.eu/mcp"
+    }
+  ]
+}

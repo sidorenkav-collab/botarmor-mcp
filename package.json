@@ -1,7 +1,8 @@
 {
   "name": "@botarmor/mcp",
-  "version": "0.1.0",
-  "description": "MCP server for BotArmor: crash-test your chatbot or AI agent from Claude Code, Cursor or any MCP client, and get a report the model can turn into fixes.",
+  "version": "0.1.1",
+  "mcpName": "io.github.sidorenkav-collab/botarmor",
+  "description": "MCP server for BotArmor: crash-test your chatbot or AI agent from Claude Code, ChatGPT, Codex, Gemini CLI, Cursor or any MCP client, and get a report the model can turn into fixes.",
   "type": "module",
   "license": "MIT",
   "author": "BotArmor AI (Rhone IA)",
@@ -28,6 +29,7 @@
   },
   "files": [
     "dist/*.js",
+    "server.json",
     "README.md",
     "LICENSE"
   ],

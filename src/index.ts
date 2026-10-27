@@ -7,7 +7,7 @@ import { z } from "zod";
 import { BotArmorClient, BotArmorError, DEFAULT_BASE_URL } from "./api.js";
 import { LEVELS, startAudit, getAuditStatus, getAuditReport, listAudits } from "./tools.js";
 
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 const server = new McpServer({ name: "botarmor", version: VERSION });
 
 // The client is created on first use, so a missing key becomes a readable tool error instead of a crash at start.
