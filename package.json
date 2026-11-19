@@ -1,8 +1,8 @@
 {
   "name": "@botarmor/mcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "mcpName": "io.github.sidorenkav-collab/botarmor",
-  "description": "MCP server for BotArmor: crash-test your chatbot or AI agent from Claude Code, ChatGPT, Codex, Gemini CLI, Cursor or any MCP client, and get a report the model can turn into fixes.",
+  "description": "LLM red teaming and prompt injection testing for chatbots and AI agents, run from Claude Code, ChatGPT, Codex, Gemini CLI, Cursor or any MCP client. No test code or YAML: A-F grade and ready-to-paste system-prompt fixes.",
   "type": "module",
   "license": "MIT",
   "author": "BotArmor AI (Rhone IA)",
@@ -17,11 +17,16 @@
   "keywords": [
     "mcp",
     "model-context-protocol",
-    "claude-code",
-    "red-team",
-    "chatbot",
+    "llm-red-teaming",
+    "red-teaming",
+    "prompt-injection",
+    "ai-security",
+    "llm-security",
+    "chatbot-testing",
     "ai-agent",
-    "security",
+    "claude-code",
+    "ai-act",
+    "no-code",
     "botarmor"
   ],
   "bin": {

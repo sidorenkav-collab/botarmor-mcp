@@ -1,18 +1,28 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.sidorenkav-collab/botarmor",
-  "description": "Crash-test chatbots and AI agents: 12 attack levels, A-F grade, ready-to-paste prompt fixes.",
+  "title": "BotArmor: LLM red teaming for chatbots",
+  "description": "LLM red teaming and prompt injection testing for chatbots and AI agents: A-F grade, prompt fixes.",
+  "icons": [
+    {
+      "src": "https://botarmor.eu/favicon.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
   "repository": {
     "url": "https://github.com/sidorenkav-collab/botarmor-mcp",
     "source": "github"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "websiteUrl": "https://botarmor.eu/agents/#mcp",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@botarmor/mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "transport": {
         "type": "stdio"
       },

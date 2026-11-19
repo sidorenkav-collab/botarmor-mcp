@@ -1,6 +1,8 @@
 # BotArmor MCP server
 
-Crash-test your chatbot or AI agent from your AI assistant: Claude Code, Claude Desktop, ChatGPT, OpenAI Codex, Gemini CLI, Cursor, VS Code (Copilot) or Windsurf. Ask "test my agent with BotArmor" and BotArmor attacks the agent on up to 12 levels:
+**BotArmor is no-code LLM red teaming and prompt injection testing for chatbots and AI agents**, built for small businesses and for people who build bots on Make, n8n or Voiceflow. In short: crash-test your bot before your customers do.
+
+This MCP server runs it from your AI assistant: Claude Code, Claude Desktop, ChatGPT, OpenAI Codex, Gemini CLI, Cursor, VS Code (Copilot) or Windsurf. Ask "test my agent with BotArmor" and BotArmor attacks the agent on up to 12 levels:
 
 - fake manager;
 - angry customer;
@@ -15,6 +17,32 @@ Crash-test your chatbot or AI agent from your AI assistant: Claude Code, Claude 
 Level 13 is added for agents with tools. The assistant gets back a report written for it: what broke, how badly, and the exact text to add to the agent's instructions. It can then edit your code and run the audit again.
 
 It is a thin wrapper over the [BotArmor API](https://app.botarmor.eu/api/v1/openapi.yaml), the same one the Make app, the n8n node and the GitHub Action use.
+
+## Who it's for
+
+- **Small businesses** with a customer-service bot on their website, WhatsApp or Messenger, who want to know if it can be talked into a discount, a fake promise or an invented price.
+- **Freelancers and agencies** who deliver bots on Make, n8n or Voiceflow and want a report to hand to their client.
+- **Developers** who want a quick adversarial check of an agent's system prompt from their editor, without writing a test suite.
+
+If you have a team that writes tests and wants red teaming inside CI, an open-source framework is probably the better fit (see below).
+
+## BotArmor vs promptfoo, Giskard and garak
+
+They are good tools and they serve a different user. Open-source frameworks give developers full control. BotArmor gives a verdict and fixes to people who don't write YAML.
+
+| | BotArmor | promptfoo | Giskard | garak |
+|---|---|---|---|---|
+| Built for | Small businesses, agencies, no-code builders | Developers | ML and product teams | Security researchers, ML engineers |
+| What you write | Nothing: a prompt, a webhook or a URL, or ask your AI assistant | YAML config, CLI | Python | CLI options, generator config |
+| Bots on Make, n8n, Voiceflow | Built in: Make app, verified n8n node, Voiceflow API | Through an HTTP provider you configure | Through a Python wrapper you write | Through a REST generator you configure |
+| What you get | A–F grade, what broke, the exact text to paste into the system prompt, a signed report for your client | Test results and a red-team report | A scan report of detected issues | A report of probe hit rates |
+| EU AI Act Art. 50 check (does the bot say it's an AI?) | Built in, one of the 12 levels | Possible as a custom test | Possible as a custom test | Possible as a custom probe |
+| Re-test after a fix | Run the audit again (`start_audit`) | Re-run the CLI | Re-run the scan | Re-run the CLI |
+| Price | Free 1-minute quick test; €9 per audit (3 free during the beta) | Open source; paid enterprise plan | Open source; paid enterprise hub | Open source |
+
+**Choose promptfoo, Giskard or garak** if you build an LLM application in code and want tests in your CI. They are more flexible, and promptfoo in particular is the stronger choice for developer teams.
+
+**Choose BotArmor** if you deliver or run a customer-facing bot, don't want to maintain a test suite, and need an answer you can act on: what to change in the prompt, and proof that it now holds.
 
 ## How it works
 
