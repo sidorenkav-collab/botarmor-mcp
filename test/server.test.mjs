@@ -26,6 +26,14 @@ test("the server lists four tools and answers a tool call through the API", asyn
     await client.connect(transport);
     const { tools } = await client.listTools();
     assert.deepEqual(tools.map((t) => t.name).sort(), ["get_audit_report", "get_audit_status", "list_audits", "start_audit"]);
+    // Connector-directory rules: annotations.title, an explicit read/write hint, a type on every parameter,
+    // and no description that tells the model to call another tool.
+    for (const t of tools) {
+      assert.ok(t.annotations?.title, `${t.name}: annotations.title`);
+      assert.equal(typeof t.annotations.readOnlyHint, "boolean", `${t.name}: readOnlyHint`);
+      for (const [p, schema] of Object.entries(t.inputSchema.properties ?? {})) assert.ok(schema.type, `${t.name}.${p}: type`);
+      for (const other of tools) if (other.name !== t.name) assert.ok(!t.description.includes(other.name), `${t.name} names ${other.name}`);
+    }
     const result = await client.callTool({ name: "list_audits", arguments: { limit: 3 } });
     assert.equal(result.isError, undefined);
     assert.match(result.content[0].text, /BA-FFFF6666/);
