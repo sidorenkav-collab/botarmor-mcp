@@ -1,5 +1,7 @@
 # BotArmor MCP server
 
+[![sidorenkav-collab/botarmor-mcp MCP server](https://glama.ai/mcp/servers/sidorenkav-collab/botarmor-mcp/badges/score.svg)](https://glama.ai/mcp/servers/sidorenkav-collab/botarmor-mcp)
+
 **BotArmor is no-code LLM red teaming and prompt injection testing for chatbots and AI agents**, built for small businesses and for people who build bots on Make, n8n or Voiceflow. In short: crash-test your bot before your customers do.
 
 This MCP server runs it from your AI assistant: Claude Code, Claude Desktop, ChatGPT, OpenAI Codex, Gemini CLI, Cursor, VS Code (Copilot) or Windsurf. Ask "test my agent with BotArmor" and BotArmor attacks the agent on up to 12 levels:
