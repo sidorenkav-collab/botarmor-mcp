@@ -35,7 +35,7 @@ server.registerTool(
       "target_type 'openai-compatible' or 'webhook': a live audit of a running bot at a public https URL; requires authorization_confirmed: true, only after the user confirmed they own the bot or have written permission. " +
       "Returns the audit id; an audit takes 5 to 20 minutes, after which its status and report are available by that id. Uses one audit credit.",
     inputSchema: {
-      system_prompt: z.string().min(1).max(8000).describe("The agent's system prompt / instructions, as in its code. For a live audit it is also the rulebook the judge checks answers against."),
+      system_prompt: z.string().min(1).max(16000).describe("The agent's system prompt / instructions, as in its code. For a live audit it is also the rulebook the judge checks answers against."),
       target_type: z.enum(["prompt", "openai-compatible", "webhook"]).optional().describe("Default: 'webhook' when endpoint_url is given, else 'prompt'."),
       endpoint_url: z.string().optional().describe("Public https URL of the running agent (live audits only). localhost cannot be reached from BotArmor's servers."),
       headers: z.record(z.string(), z.string()).optional().describe("Headers the target needs, e.g. {\"Authorization\": \"Bearer ...\"}. A credential header is stored encrypted by BotArmor."),
