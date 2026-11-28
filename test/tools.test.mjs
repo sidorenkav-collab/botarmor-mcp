@@ -27,6 +27,14 @@ test("prompt mode sends the system prompt with no target URL and never needs aut
   assert.equal(calls[0].headers.authorization, "Bearer ba_live_test");
 });
 
+test("depth quick (free first look) reaches the API; full is the default and sends nothing", async () => {
+  const { client, calls } = fakeApi({ "POST /audits": () => [202, { success: true, audit_code: "BA-AAAA1111", mode: "simulated" }] });
+  await startAudit(client, { system_prompt: "x", depth: "quick" });
+  assert.equal(calls[0].body.depth, "quick");
+  await startAudit(client, { system_prompt: "x" });
+  assert.equal(calls[1].body.depth, undefined);
+});
+
 test("localhost is refused with a way out (prompt mode or tunnel), before any API call", async () => {
   const { client, calls } = fakeApi({});
   await assert.rejects(

@@ -52,7 +52,7 @@ They are good tools and they serve a different user. Open-source frameworks give
 2. **The assistant calls `start_audit`.** It passes the agent's system prompt, which it reads from your code.
    - **Prompt mode** (default): BotArmor plays that prompt on its own model. Use it for an agent on localhost or not deployed yet.
    - **Live mode**: BotArmor talks to your running bot at a public https URL. The assistant must first ask you to confirm you own the bot.
-3. **BotArmor attacks.** For each level it runs 5 adaptive sessions. A judge model rules on each session, and a jury of three models confirms every break. An audit takes 5–20 minutes and uses one credit.
+3. **BotArmor attacks.** For each level it runs 3 to 5 adaptive sessions (3 when the bot clearly holds, 10 when in doubt). A judge model rules on each session, and a jury of three models confirms every break. An audit takes 5–20 minutes and uses one credit.
 4. **The assistant polls `get_audit_status`.** It shows progress: levels done out of total.
 5. **It reads `get_audit_report`.** The report gives the grade A–F, a table of levels with severity, and for each failed level what happened plus a ready-to-paste fix for the system prompt.
 6. **It proposes the fix in your code.** With your OK it applies the fix, then runs `start_audit` again to check that the level now holds.
@@ -209,7 +209,7 @@ In Windsurf, use the `mcpServers` block as for Cursor, in `~/.codeium/windsurf/m
 
 | Tool | What it does |
 |---|---|
-| `start_audit` | Starts an audit and returns its id (`BA-XXXXXXXX`). It takes 5–20 minutes and uses one audit credit. |
+| `start_audit` | Starts an audit and returns its id (`BA-XXXXXXXX`). It takes 5–20 minutes and uses one audit credit. With `depth: "quick"` it is a free first look instead: one short session per level, one per day, no badge. |
 | `get_audit_status` | Status, progress (levels done out of total), and the grade once completed. |
 | `get_audit_report` | Grade, a table of levels with severity, and for each failed level what happened plus the text to paste into the system prompt. |
 | `list_audits` | Your latest audits. |

@@ -1,6 +1,6 @@
 {
   "name": "@botarmor/mcp",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "mcpName": "io.github.sidorenkav-collab/botarmor",
   "description": "LLM red teaming and prompt injection testing for chatbots and AI agents, run from Claude Code, ChatGPT, Codex, Gemini CLI, Cursor or any MCP client. No test code or YAML: A-F grade and ready-to-paste system-prompt fixes.",
   "type": "module",

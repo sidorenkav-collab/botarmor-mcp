@@ -18,6 +18,7 @@ export interface StartAuditInput {
   levels?: Level[];
   lang?: "fr" | "en" | "de" | "es" | "ru";
   min_grade?: "A" | "B" | "C" | "D" | "F";
+  depth?: "full" | "quick";
   authorization_confirmed?: boolean;
 }
 
@@ -44,6 +45,7 @@ export async function startAudit(client: BotArmorClient, input: StartAuditInput)
     ...(input.levels?.length ? { levels: input.levels } : {}),
     lang: input.lang ?? "en",
     ...(input.min_grade ? { min_grade: input.min_grade } : {}),
+    ...(input.depth === "quick" ? { depth: "quick" } : {}),
   };
 
   if (type === "prompt") {

@@ -30,10 +30,11 @@ server.registerTool(
   {
     title: "Start a BotArmor audit",
     description:
-      "Crash-test a chatbot or AI agent with BotArmor: up to 12 attack levels (fake manager, angry customer, fake lawyer, prompt injection, role-play, phishing, AI disclosure under the EU AI Act, invented facts...) plus level 13 for agents with tools, 5 adaptive sessions each. " +
+      "Crash-test a chatbot or AI agent with BotArmor: up to 12 attack levels (fake manager, angry customer, fake lawyer, prompt injection, role-play, phishing, AI disclosure under the EU AI Act, invented facts...) plus level 13 for agents with tools, 3 to 5 adaptive sessions each (10 when in doubt). " +
       "Two modes. target_type 'prompt' (default when no endpoint_url): BotArmor plays the agent's system prompt on its own model; use it for an agent running on localhost or not deployed yet, reading the system prompt from the code. " +
       "target_type 'openai-compatible' or 'webhook': a live audit of a running bot at a public https URL; requires authorization_confirmed: true, only after the user confirmed they own the bot or have written permission. " +
-      "Returns the audit id; an audit takes 5 to 20 minutes, after which its status and report are available by that id. Uses one audit credit.",
+      "depth 'quick': a free first look, one short session per level (about 30 to 40 messages to the bot), one per account per day, no badge. " +
+      "Returns the audit id; an audit takes 5 to 20 minutes (a quick scan a few minutes), after which its status and report are available by that id. A full audit uses one audit credit.",
     inputSchema: {
       system_prompt: z.string().min(1).max(16000).describe("The agent's system prompt / instructions, as in its code. For a live audit it is also the rulebook the judge checks answers against."),
       target_type: z.enum(["prompt", "openai-compatible", "webhook"]).optional().describe("Default: 'webhook' when endpoint_url is given, else 'prompt'."),
@@ -46,6 +47,7 @@ server.registerTool(
       name: z.string().max(120).optional().describe("Name shown in the report."),
       lang: z.enum(["fr", "en", "de", "es", "uk", "ru"]).optional().describe("Report language, default en."),
       min_grade: z.enum(["A", "B", "C", "D", "F"]).optional().describe("Pass threshold shown by get_audit_status, default B."),
+      depth: z.enum(["full", "quick"]).optional().describe("full (default): 3 to 5 sessions per level, uses one credit. quick: free first look, one short session per level, one per account per day, no badge."),
       authorization_confirmed: z.boolean().optional().describe("Live audits only. true = the user confirmed they own the bot or hold the owner's written permission to test it."),
     },
     annotations: { title: "Start a BotArmor audit", readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
